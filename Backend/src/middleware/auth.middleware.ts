@@ -34,25 +34,24 @@ export const restrictTo = (...roles: string[]) => {
 
 export const decodeUserIfLoggedIn = async (req: any, res: any, next: any) => {
   try {
-    let token;
-    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-      token = req.headers.authorization.split(' ')[1];
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer')) {
+      return next(); 
     }
 
-    if (!token) {
-      return next();
-    }
+    const token = authHeader.split(' ')[1];
+    if (!token) return next();
 
-    const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
-
-    const [rows]: any = await pool.query('SELECT id, role FROM users WHERE id = ?', [decoded.id]);
-
-    if (rows.length > 0) {
-      req.user = rows[0];
+    // Verify token - ensure JWT_SECRET is set in Vercel!
+    const decoded: any = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+    if (decoded) {
+      req.user = { id: decoded.id, role: decoded.role };
     }
 
     next();
   } catch (error) {
+    // If token is expired or invalid, just treat them as a guest
+    console.log("JWT Decode failed, continuing as guest");
     next();
   }
 };
