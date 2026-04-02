@@ -55,6 +55,9 @@ To ensure high performance as the property database grows, the following indexin
 - **Add Property**: A guided form to add new properties with multiple image uploads (processed via Cloudinary).
 - **Soft Deletion**: Agents can archive/remove their listings without losing historical data integrity.
 
+- <img width="846" height="420" alt="image" src="https://github.com/user-attachments/assets/7d04d065-1680-43c1-bdf5-07cb516e72ce" />
+
+
 ---
 
 ## ⚙️ How to Run
