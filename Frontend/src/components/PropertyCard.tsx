@@ -14,7 +14,7 @@ const PropertyCard = ({ property, index, onAction }: { property: any, index: num
 
   const imageUrl = property.thumbnail
     ? `${import.meta.env.VITE_BACKEND_URL}${property.thumbnail}`
-    : 'https://images.unsplash.com/photo-1600585154340-be6191da95b8?auto=format&fit=crop&q=80';
+    : '/property.jpg';
 
 
   useEffect(() => {

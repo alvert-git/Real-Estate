@@ -7,15 +7,9 @@ import authRoutes from "./routes/auth.routes.js";
 import propertyRoutes from "./routes/property.routes.js"
 import favoriteRoutes from "./routes/favorite.routes.js"
 import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app: Application = express();
 const PORT = Number(process.env.PORT) || 9000;
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 
 app.use(express.json());
