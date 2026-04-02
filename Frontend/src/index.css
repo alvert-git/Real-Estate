@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+html {
+  /* Default browser size is 16px. 
+     Setting it to 90% (14.4px) will shrink 
+     EVERYTHING that uses rem/Tailwind units. */
+  font-size: 90%; 
+}
