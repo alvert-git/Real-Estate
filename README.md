@@ -60,6 +60,20 @@ To ensure high performance as the property database grows, the following indexin
 
 ---
 
+## 🌐 Live Demo
+
+The application is fully deployed and available for testing:
+
+**Link**: [https://real-estate-3f5r.vercel.app/](https://real-estate-3f5r.vercel.app/)
+
+### Test Credentials
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Agent** | `agent@gmail.com` | `agentaccount` |
+| **User** | `user@gmail.com` | `useraccount` |
+
+---
+
 ## ⚙️ How to Run
 
 ### Prerequisites
