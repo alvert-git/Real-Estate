@@ -13,8 +13,10 @@ const PropertyCard = ({ property, index, onAction }: { property: any, index: num
   const displayIndex = (index + 1).toString().padStart(2, '0');
 
   const imageUrl = property.thumbnail
-    ? `${import.meta.env.VITE_BACKEND_URL}${property.thumbnail}`
-    : '/property.jpg';
+  ? property.thumbnail.startsWith('http') 
+    ? property.thumbnail                             
+    : `${import.meta.env.VITE_BACKEND_URL}${property.thumbnail}` 
+  : '/property.jpg';
 
 
   useEffect(() => {
