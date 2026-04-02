@@ -1,12 +1,15 @@
 import type { Request, Response, NextFunction } from 'express';
 import { PropertyService } from '../services/property.service.js';
+import { uploadToCloudinary } from '../utils/cloudinary.js';
 
 export class PropertyController {
   static async create(req: Request, res: Response, next: NextFunction) {
     try {
       const agentId = (req as any).user.id;
       const files = req.files as Express.Multer.File[];
-      const imageUrls = files ? files.map(f => `/uploads/properties/${f.filename}`) : [];
+      
+      const uploadPromises = files.map(file => uploadToCloudinary(file));
+      const imageUrls = await Promise.all(uploadPromises);
 
       const propertyId = await PropertyService.createProperty(req.body, agentId, imageUrls);
 
