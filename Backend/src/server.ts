@@ -15,13 +15,13 @@ const __dirname = path.dirname(__filename);
 
 const app: Application = express();
 const PORT = Number(process.env.PORT) || 9000;
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: `${process.env.VITE_FRONTEND_URL}`,
     credentials: true,
   })
 );
