@@ -84,6 +84,7 @@ The application is fully deployed and available for testing:
 ### 1. Database Setup
 1. Create a MySQL database named `real_estate`.
 2. Ensure you have tables for `users`, `properties`, `property_images`, and `favorites`.
+3. Or import .sql file present at `Backend/src/config/`
 
 ### 2. Backend Configuration
 1. Navigate to the `Backend` directory: `cd Backend`
